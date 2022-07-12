@@ -1,8 +1,6 @@
-
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    {% for post in posts %}
     <article class="post">
         <span>
             <h2 style="display: inline-block;"><a href="{% url 'post_detail' pk=post.pk %}" style="display: inline-block;">{{ post.title }}</a></h2>
@@ -10,14 +8,15 @@
         </span>
         <div>
             <span>
-                <p id="tempCont{{ forloop.counter }}">{{ post.text|slice:":50" }}...</p>
+                <p id="tempCont{{ forloop.counter }}">{{ post.text }}...</p>
             </span>
         </div>
         <div class="mainCont" id="mainCont{{ forloop.counter }}">
             <p>{{ post.text|linebreaksbr }}</p>
         </div>
-        <time>Posted: {{ post.published_date }}</time>
+        {% if post.published_date %}
+            <time>Posted: {{ post.published_date }}</time>
+        {% endif %}
         <hr>
     </article>
-    {% endfor %}
 {% endblock %}
