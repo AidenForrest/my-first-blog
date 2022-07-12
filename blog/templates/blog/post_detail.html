@@ -21,11 +21,42 @@
         <time>Last Update: {{ post.published_date }}</time>
         <hr>
         {% if user.is_authenticated %}
-        <aside class="actions">
-            <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn secondary">
-                <img src="{% static "icons/pencil-fill.svg" %}" alt="Create New Post!" width="50px"/>
-            </a>
-        </aside>
+        <span>
+            <aside class="actions" style="display: inline-block;">
+                <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn secondary"  data-toggle="tooltip" title="Publish">
+                    <img src="{% static "icons/pencil-fill.svg" %}" alt="Create New Post!" width="50px"/>
+                </a>
+            </aside>
+            {% if post.published_date %}
+            {% else %}
+            <aside class="actions" style="display: inline-block;" >
+                <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn secondary" data-toggle="tooltip" title="Publish">
+                    <img src="{% static "icons/send.svg" %}" alt="Create New Post!" width="50px"/>
+                </a>
+            </aside>
+            {% endif %}
+            <aside class="actions" style="display: inline-block;" >
+                <a href="{% url 'post_delete' pk=post.pk %}" class="btn btn secondary" data-toggle="tooltip" title="Delete">
+                    <img src="{% static "icons/delete.svg" %}" alt="Create New Post!" width="50px"/>
+                </a>
+            </aside>
+        </span>
+        <a href="{% url 'add_comment_to_post' pk=post.pk %}" class="top-menu" data-toggle="tooltip" title="Comment">
+            <img src="{% static "icons/comment.svg" %}" alt="Add comment" width="50px"style="margin-left: 20px"/>
+        </a>
+        {% else %}
+        <a href="{% url 'add_comment_to_post' pk=post.pk %}" class="top-menu" data-toggle="tooltip" title="Comment">
+            <img src="{% static "icons/comment.svg" %}" alt="Add comment" width="50px"/>
+        </a>
         {% endif %}
     </article>
+    {% for comment in comments %}
+    <div class="comment" style="padding-bottom: 20px; padding-top: 20px;">
+        <span> - Comment by: <strong>{{ comment.author }}</strong></span>
+        <div style="padding-left: 20px">
+            <p>{{ comment.text|linebreaks }}</p>
+            <div class="date">Written: {{ comment.created_date }}</div>
+        </div>
+    </div>
+    {% endfor %}
 {% endblock %}
