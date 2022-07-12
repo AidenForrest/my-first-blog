@@ -6,7 +6,7 @@
     <article class="post">
         <span>
             <h2 style="display: inline-block;"><a href="{% url 'post_detail' pk=post.pk %}" style="display: inline-block;">{{ post.title }}</a></h2>
-            <button type="button" class="btn btn-primary" style="display: inline-block; font-size: small; margin-left: 10px; margin-top: -8px;" id={{ forloop.counter }} onclick="openCont()">Read</button>
+            <button type="button" class="btn btn-primary" style="display: inline-block; font-size: small; margin-left: 10px; margin-top: -8px;" id={{ forloop.counter }} onclick="openCont()">Preview</button>
         </span>
         <div>
             <span>
