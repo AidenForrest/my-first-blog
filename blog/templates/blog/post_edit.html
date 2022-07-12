@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+{% csrf_token %}
     <h2>Post:</h2>
     <div style="align-items: center; text-align: center;">
         <form method="post" class="post-form">{% csrf_token %}

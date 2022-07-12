@@ -37,7 +37,7 @@
             {% endif %}
             <aside class="actions" style="display: inline-block;" >
                 <a href="{% url 'post_delete' pk=post.pk %}" class="btn btn secondary" data-toggle="tooltip" title="Delete">
-                    <img src="{% static "icons/delete.svg" %}" alt="Create New Post!" width="50px"/>
+                    <img src="{% static "icons/delete.svg" %}" alt="Delete post" width="50px"/>
                 </a>
             </aside>
         </span>
@@ -50,13 +50,40 @@
         </a>
         {% endif %}
     </article>
-    {% for comment in comments %}
-    <div class="comment" style="padding-bottom: 20px; padding-top: 20px;">
-        <span> - Comment by: <strong>{{ comment.author }}</strong></span>
-        <div style="padding-left: 20px">
-            <p>{{ comment.text|linebreaks }}</p>
-            <div class="date">Written: {{ comment.created_date }}</div>
-        </div>
-    </div>
+    {% for comment in post.comments.all %}
+        {% if comment.approved_comment %}
+            <div class="comment" style="padding-bottom: 20px; padding-top: 20px;">
+                <span> - Comment by: <strong>{{ comment.author }}</strong>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'delete_comment' pk=comment.pk %}" class="top-menu" data-toggle="tooltip" title="Delete" style="display: inline-block; margin-left: 10px;">
+                            <img src="{% static "icons/delete.svg" %}" alt="Delete" width="30px"/>
+                        </a>
+                    {% endif %}
+                </span>
+                <div style="padding-left: 20px">
+                    <p>{{ comment.text|linebreaks }}</p>
+                    <div class="date">Written: {{ comment.created_date }}</div>
+                </div>
+            </div>
+        {% else %}
+            {% if user.is_authenticated %}
+            <span>
+                <div class="comment" style="padding-bottom: 20px; padding-top: 20px; display: inline-block;">
+                    <span> - Comment by: <strong>{{ comment.author }}</strong>
+                        <a href="{% url 'approve' pk=comment.pk %}" class="top-menu" data-toggle="tooltip" title="Approve" style="display: inline-block; margin-left: 10px;">
+                            <img src="{% static "icons/check.svg" %}" alt="Approve" width="50px"/>
+                        </a>
+                        <a href="{% url 'delete_comment' pk=comment.pk %}" class="top-menu" data-toggle="tooltip" title="Delete" style="display: inline-block; margin-left: 10px;">
+                            <img src="{% static "icons/delete.svg" %}" alt="Delete" width="30px"/>
+                        </a>
+                    </span>
+                    <div style="padding-left: 20px">
+                        <p>{{ comment.text|linebreaks }}</p>
+                        <div class="date">Written: {{ comment.created_date }}</div>
+                    </div>
+                </div>
+            </span>
+            {% endif %}
+        {% endif %}
     {% endfor %}
 {% endblock %}
