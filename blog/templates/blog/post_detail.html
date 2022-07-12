@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
     <article class="post">
@@ -8,15 +9,24 @@
         </span>
         <div>
             <span>
-                <p id="tempCont{{ forloop.counter }}">{{ post.text }}...</p>
+                <p id="tempCont{{ forloop.counter }}">{{ post.text }}</p>
             </span>
         </div>
         <div class="mainCont" id="mainCont{{ forloop.counter }}">
             <p>{{ post.text|linebreaksbr }}</p>
         </div>
         {% if post.published_date %}
-            <time>Posted: {{ post.published_date }}</time>
+            <time>Created: {{ post.created_date }}</time>
+            <br>
         {% endif %}
+        <time>Last Update: {{ post.published_date }}</time>
         <hr>
+        {% if user.is_authenticated %}
+        <aside class="actions">
+            <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn secondary">
+                <img src="{% static "icons/pencil-fill.svg" %}" alt="Create New Post!" width="50px"/>
+            </a>
+        </aside>
+        {% endif %}
     </article>
 {% endblock %}

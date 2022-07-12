@@ -13,7 +13,14 @@
 
     <header class="page-header">
         <div class="container">
-            <h1>Welcome To Aiden's Blog</h1>
+            <h1 style=>Welcome To Aiden's Blog</h1>
+        </div>
+        <div class="createImage" style="position: absolute; top: 30px;">
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu">
+                    <img src="{% static "icons/file-earmark-plus.svg" %}" alt="Create New Post!" width="50px"/>
+                </a>
+            {% endif %}
         </div>
     </header>
 
@@ -25,27 +32,6 @@
             </div>
         </div>
     </main>
-
-    <!-- <div style="padding-left: 10px;">
-        {% for post in posts %}
-        <article class="post">
-            <span>
-                <h2 style="display: inline-block;"><a href="" style="display: inline-block;">{{ post.title }}</a></h2>
-                <button type="button" class="btn btn-primary" style="display: inline-block; font-size: small; margin-left: 10px; margin-top: -8px;" id={{ forloop.counter }} onclick="openCont()">Read</button>
-            </span>
-            <div>
-                <span>
-                    <p id="tempCont{{ forloop.counter }}">{{ post.text|slice:":50" }}...</p>
-                </span>
-            </div>
-            <div class="mainCont" id="mainCont{{ forloop.counter }}">
-                <p>{{ post.text|linebreaksbr }}</p>
-            </div>
-            <time>Posted: {{ post.published_date }}</time>
-            <hr>
-        </article>
-        {% endfor %}
-    </div> -->
 
 </body>
 </html>
