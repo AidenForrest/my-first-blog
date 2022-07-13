@@ -7,6 +7,11 @@ from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import permissions
+from .serializers import PostSerializer
 
 # Create your views here.
 
@@ -87,3 +92,25 @@ def delete_comment(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail', pk=comment.post.pk)
+
+class PostListApiView(APIView):
+
+    def get(self, request, *args, **kwargs):
+        posts = Post.objects.order_by('created_date')
+        print(posts)
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, *args, **kwargs):
+        data = {
+            'author': request.data.get('author'),
+            'title': request.data.get('title'),
+            'text': request.data.get('text'),
+            'created_date': timezone.now(),
+            'published_date': timezone.now()
+        }
+        serializer = PostSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
