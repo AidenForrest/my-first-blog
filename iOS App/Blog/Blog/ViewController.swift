@@ -30,7 +30,7 @@ class ViewController: UIViewController {
                     let posts = try decoder.decode([Post].self, from: data)
                     for var i in 0...posts.count - 1 {
                         if i == index {
-                            DispatchQueue.main.async {
+                            DispatchQueue.main.async { [self] in
                                 postTitle.text = posts[i - 1].title
                                 body.text = posts[i - 1].text
                             }
@@ -61,11 +61,13 @@ class ViewController: UIViewController {
                         self.segments.removeAllSegments()
                     }
                     for var i in 0...posts.count - 1 {
-                        DispatchQueue.main.async {
-                            self.segments.insertSegment(withTitle: "Post " + String(i), at: i, animated: true)
-                            segments.selectedSegmentIndex = 0
-                            postTitle.text = posts[0].title
-                            body.text = posts[0].text
+                        if posts[i].published_date != nil {
+                            DispatchQueue.main.async { [self] in
+                                self.segments.insertSegment(withTitle: "Post " + String(i), at: i, animated: true)
+                                segments.selectedSegmentIndex = 0
+                                postTitle.text = posts[0].title
+                                body.text = posts[0].text
+                            }
                         }
                         i+=1
                     }
@@ -78,5 +80,3 @@ class ViewController: UIViewController {
     }
     
 }
-
-

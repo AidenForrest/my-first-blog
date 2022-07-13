@@ -32,20 +32,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tE-xs-BUm">
-                                <rect key="frame" x="11" y="155" width="61" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last updated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbk-Rp-T3h">
-                                <rect key="frame" x="11" y="192" width="100" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DFs-fE-HUO">
-                                <rect key="frame" x="20" y="257" width="374" height="30"/>
+                                <rect key="frame" x="20" y="180" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -56,26 +44,20 @@
                         <constraints>
                             <constraint firstItem="Twf-Z4-55R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5cT-QB-pzG"/>
                             <constraint firstItem="Twf-Z4-55R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Fhy-Ij-1Y7"/>
+                            <constraint firstItem="DFs-fE-HUO" firstAttribute="top" secondItem="Twf-Z4-55R" secondAttribute="bottom" constant="66.5" id="G8M-GM-4sd"/>
                             <constraint firstItem="DFs-fE-HUO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="M1M-4P-Nys"/>
                             <constraint firstItem="E4D-Vo-dHa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wu8-Ee-VOo"/>
-                            <constraint firstItem="mbk-Rp-T3h" firstAttribute="top" secondItem="9tE-xs-BUm" secondAttribute="bottom" constant="16" id="Z6c-7e-ZY4"/>
-                            <constraint firstItem="9tE-xs-BUm" firstAttribute="top" secondItem="Twf-Z4-55R" secondAttribute="bottom" constant="41.5" id="b8D-Wa-TZc"/>
-                            <constraint firstItem="DFs-fE-HUO" firstAttribute="top" secondItem="mbk-Rp-T3h" secondAttribute="bottom" constant="44" id="fNd-h0-kHZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Twf-Z4-55R" secondAttribute="trailing" constant="20" id="iCg-hz-YqL"/>
                             <constraint firstItem="DFs-fE-HUO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iaI-SG-Z2K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="E4D-Vo-dHa" secondAttribute="bottom" constant="21" id="seA-u9-bOp"/>
                             <constraint firstItem="Twf-Z4-55R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="31" id="ufz-pd-jEN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DFs-fE-HUO" secondAttribute="trailing" constant="20" id="wbf-sG-Ydb"/>
-                            <constraint firstItem="9tE-xs-BUm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="wzj-um-P0u"/>
-                            <constraint firstItem="mbk-Rp-T3h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="yZL-BI-RYD"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="body" destination="DFs-fE-HUO" id="she-eL-xwE"/>
-                        <outlet property="created" destination="9tE-xs-BUm" id="qCV-ky-b3Y"/>
                         <outlet property="postTitle" destination="Twf-Z4-55R" id="tvu-yN-LTb"/>
                         <outlet property="segments" destination="E4D-Vo-dHa" id="D5n-0w-u8x"/>
-                        <outlet property="updated" destination="mbk-Rp-T3h" id="HgI-S6-JER"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
