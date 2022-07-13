@@ -97,9 +97,6 @@ class PostListApiView(APIView):
 
     def get(self, request, *args, **kwargs):
         posts = Post.objects.order_by('created_date')
-        for post in posts:
-            post.created_date = dateformat.format(post.created_date, 'Y-m-d H:i:s')
-            post.published_date = dateformat.format(post.published_date, 'Y-m-d H:i:s')
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

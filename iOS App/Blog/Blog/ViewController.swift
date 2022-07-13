@@ -33,8 +33,6 @@ class ViewController: UIViewController {
                             DispatchQueue.main.async {
                                 postTitle.text = posts[i - 1].title
                                 body.text = posts[i - 1].text
-                                created.text = posts[i - 1].created_date
-                                updated.text = posts[i - 1].published_date
                             }
                         }
                         i+=1
@@ -68,8 +66,6 @@ class ViewController: UIViewController {
                             segments.selectedSegmentIndex = 0
                             postTitle.text = posts[0].title
                             body.text = posts[0].text
-                            created.text = posts[0].created_date
-                            updated.text = posts[0].published_date
                         }
                         i+=1
                     }
