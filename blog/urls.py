@@ -4,9 +4,6 @@ from . import views
 from .forms import CustomLoginForm
 from django.contrib import admin
 from django.contrib.auth import views as authViews
-from .views import (
-    PostListApiView,
-)
 
 urlpatterns = [
     path('', views.post_list, name='post_list'),
@@ -21,5 +18,6 @@ urlpatterns = [
     path('post/<int:pk>/comment/', views.add_comment_to_post, name='add_comment_to_post'),
     path('post/<int:pk>/approve/', views.approve, name='approve'),
     path('post/<int:pk>/comment/delete', views.delete_comment, name='delete_comment'),
-    path('post/api', PostListApiView.as_view())
+    path('post/api', views.PostListApiView.as_view()),
+    path('post/<int:pk>/comment/api', views.CommentApiView.as_view()),
 ]
