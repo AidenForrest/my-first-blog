@@ -1,7 +1,7 @@
 from gc import get_objects
 from tracemalloc import get_object_traceback
 from django.shortcuts import render, get_object_or_404
-from django.utils import timezone
+from django.utils import timezone, dateformat
 from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
@@ -97,7 +97,9 @@ class PostListApiView(APIView):
 
     def get(self, request, *args, **kwargs):
         posts = Post.objects.order_by('created_date')
-        print(posts)
+        for post in posts:
+            post.created_date = dateformat.format(post.created_date, 'Y-m-d H:i:s')
+            post.published_date = dateformat.format(post.published_date, 'Y-m-d H:i:s')
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
