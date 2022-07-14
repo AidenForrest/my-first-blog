@@ -32,14 +32,16 @@ class CommentViewController: UIViewController {
                 do {
                     let posts = try decoder.decode([Comment].self, from: data)
                     if posts.count != 0 {
-                        for var i in 0...posts.count - 1 {
-                            if i == index {
+                        // Post for loop update
+                        var count = 0
+                        for post in posts {
+                            if count == index {
                                 DispatchQueue.main.async { [self] in
-                                    author.text = posts[i - 1].author
-                                    body.text = posts[i - 1].text
-                                }
+                                    author.text = post.author
+                                    body.text = post.text
+                                  }
                             }
-                            i+=1
+                            count += 1
                         }
                     }
                 } catch {
