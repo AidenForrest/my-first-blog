@@ -69,17 +69,38 @@ class CommentViewController: UIViewController {
                         self.segments.removeAllSegments()
                     }
                     if posts.count != 0 {
-                        for var i in 0...posts.count - 1 {
-                            if posts[i].approved_comment != false {
+                        
+                        // ISSUE
+                        
+                        // NEW
+                        
+                        var count = 0
+                        for comment in posts {
+                            if comment.approved_comment {
                                 DispatchQueue.main.async { [self] in
-                                    self.segments.insertSegment(withTitle: "Comment " + String(i), at: i, animated: true)
+                                    self.segments.insertSegment(withTitle: "Comment " + String(count), at: count, animated: true)
+                                    print(count) // prints 1,2 and 3 however the title of all the segments is 'Comment 3'?
                                     segments.selectedSegmentIndex = 0
-                                    author.text = posts[0].author
-                                    body.text = posts[0].text
+                                    author.text = comment.author
+                                    body.text = comment.text
                                 }
                             }
-                            i+=1
+                            count += 1
                         }
+                        
+                        
+                        // OLD
+//                        for var i in 0...posts.count - 1 {
+//                            if posts[i].approved_comment != false {
+//                                DispatchQueue.main.async { [self] in
+//                                    self.segments.insertSegment(withTitle: "Comment " + String(i), at: i, animated: true)
+//                                    segments.selectedSegmentIndex = 0
+//                                    author.text = posts[0].author
+//                                    body.text = posts[0].text
+//                                }
+//                            }
+//                            i+=1
+//                        }
                     }
                 } catch {
                     print(error)
