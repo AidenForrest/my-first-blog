@@ -117,7 +117,11 @@ class PostListApiView(APIView):
 class CommentApiView(APIView):
 
     def get(self, request, *args, **kwargs):
+        print('jello')
         index = str(request.get_full_path).split('/')[2]
-        post = get_object_or_404(Post, pk=int(index))
-        serializer = CommentSerializer(post.comments.all(), many=True)
+        commentIndex = str(request.get_full_path).split('/')[4]
+        Post.objects.get(pk=index)
+        post = get_object_or_404(Post, pk=index)
+        comment = post.comments.all().get(pk=commentIndex)
+        serializer = CommentSerializer(comment)
         return Response(serializer.data, status=status.HTTP_200_OK)
