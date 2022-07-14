@@ -65,7 +65,7 @@ class ViewController: UIViewController {
                         self.segments.removeAllSegments()
                     }
                     for var i in 0...posts.count - 1 {
-                        if posts[i].published_date != nil {
+                        if posts[i].publishedDate != nil {
                             DispatchQueue.main.async { [self] in
                                 self.segments.insertSegment(withTitle: "Post " + String(i), at: i, animated: true)
                                 segments.selectedSegmentIndex = 0
@@ -75,6 +75,7 @@ class ViewController: UIViewController {
                         }
                         i+=1
                     }
+                    
                 } catch {
                     print(error)
                 }
