@@ -19,5 +19,5 @@ urlpatterns = [
     path('post/<int:pk>/approve/', views.approve, name='approve'),
     path('post/<int:pk>/comment/delete', views.delete_comment, name='delete_comment'),
     path('post/api', views.PostListApiView.as_view()),
-    path('post/<int:pk>/comment/<int:cpk>/api', views.CommentApiView.as_view()),
+    path('post/<int:pk>/comment/api', views.CommentApiView.as_view()),
 ]
