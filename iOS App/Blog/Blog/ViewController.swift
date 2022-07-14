@@ -17,8 +17,10 @@ class ViewController: UIViewController {
     let defaults = UserDefaults.standard
     
     
+    // Loads blog post when segment is selected
     @IBAction func `switch`(_ sender: Any, forEvent event: UIEvent) {
         let index = segments.selectedSegmentIndex
+        // Gets posts again as global variable would not work?
         guard let url = URL(string: "http://aidenma182.pythonanywhere.com/post/api") else{return}
         let task = URLSession.shared.dataTask(with: url) { [self]
             data, response, error in
@@ -33,6 +35,7 @@ class ViewController: UIViewController {
                             DispatchQueue.main.async { [self] in
                                 postTitle.text = posts[i - 1].title
                                 body.text = posts[i - 1].text
+                                CommentViewController.vars.post = i
                             }
                         }
                         i+=1
@@ -48,6 +51,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        // Loads posts for first time and creates segments accordingly
         guard let url = URL(string: "http://aidenma182.pythonanywhere.com/post/api") else{return}
         let task = URLSession.shared.dataTask(with: url) { [self]
             data, response, error in

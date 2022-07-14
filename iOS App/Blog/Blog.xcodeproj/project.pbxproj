@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF472BCF287F1103006B6C9D /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF472BCE287F1103006B6C9D /* CommentViewController.swift */; };
+		DF472BD1287F11A3006B6C9D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF472BD0287F11A3006B6C9D /* Comment.swift */; };
 		DFC19933287ECBE6000B8BC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC19932287ECBE6000B8BC2 /* AppDelegate.swift */; };
 		DFC19935287ECBE6000B8BC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC19934287ECBE6000B8BC2 /* SceneDelegate.swift */; };
 		DFC19937287ECBE6000B8BC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC19936287ECBE6000B8BC2 /* ViewController.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF472BCE287F1103006B6C9D /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		DF472BD0287F11A3006B6C9D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		DFC1992F287ECBE6000B8BC2 /* Blog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC19932287ECBE6000B8BC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFC19934287ECBE6000B8BC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,10 +109,12 @@
 				DFC19934287ECBE6000B8BC2 /* SceneDelegate.swift */,
 				DFC19936287ECBE6000B8BC2 /* ViewController.swift */,
 				DFC19938287ECBE6000B8BC2 /* Main.storyboard */,
+				DF472BCE287F1103006B6C9D /* CommentViewController.swift */,
 				DFC1993B287ECBE8000B8BC2 /* Assets.xcassets */,
 				DFC1993D287ECBE8000B8BC2 /* LaunchScreen.storyboard */,
 				DFC19940287ECBE8000B8BC2 /* Info.plist */,
 				DFC19962287ED0E4000B8BC2 /* Post.swift */,
+				DF472BD0287F11A3006B6C9D /* Comment.swift */,
 			);
 			path = Blog;
 			sourceTree = "<group>";
@@ -261,6 +267,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF472BCF287F1103006B6C9D /* CommentViewController.swift in Sources */,
+				DF472BD1287F11A3006B6C9D /* Comment.swift in Sources */,
 				DFC19937287ECBE6000B8BC2 /* ViewController.swift in Sources */,
 				DFC19933287ECBE6000B8BC2 /* AppDelegate.swift in Sources */,
 				DFC19935287ECBE6000B8BC2 /* SceneDelegate.swift in Sources */,
